@@ -13,10 +13,10 @@ export default function Home() {
         className="flex flex-col items-center justify-center flex-1 bg-secondary"
       >
         <h1 className="text-3xl font-bold text-center">
-          Welcome to the Genshin Characters App
+          Welcome to the Wuthering Waves Characters App
         </h1>
         <p className="text-xl text-center">
-          Get to know all the characters from the game Genshin Impact here!
+          Get to know all the characters from the game Wuthering Waves here!
         </p>
         <div className="flex flex-col sm:flex-row gap-5 m-5">
           <motion.div

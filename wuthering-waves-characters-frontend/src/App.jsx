@@ -6,7 +6,7 @@ import { queryClient } from "./api/http";
 
 import HomePage from "./pages/HomePage";
 import CharactersPage from "./pages/CharactersPage";
-import ArtifactsPage from "./pages/ArtifactsPage";
+import WeaponsPage from "./pages/WeaponsPage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/characters" element={<CharactersPage />} />
-            <Route path="/artifacts" element={<ArtifactsPage />} />
+            <Route path="/artifacts" element={<WeaponsPage />} />
           </Routes>
         </BrowserRouter>
         <ToastContainer />

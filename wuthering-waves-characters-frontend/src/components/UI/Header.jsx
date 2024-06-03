@@ -56,7 +56,7 @@ export default function Header() {
           className="text-primary-content hover:text-base-100 text-xl font-bold ml-5"
         >
           <img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Genshin_Impact_logo.svg/2560px-Genshin_Impact_logo.svg.png"
+            src="https://wutheringwaves.kurogames.com/static4.0/assets/logo-en-398c8e54.png"
             alt="logo"
             className="inline p-2"
             width={logoWidth}

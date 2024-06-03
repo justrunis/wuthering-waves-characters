@@ -24,7 +24,7 @@ export default function CharactersPage() {
     const charactersToDisplay = data?.slice(startIndex, endIndex);
 
     return charactersToDisplay?.map((character) => (
-      <CharacterCard key={character.id} character={character} />
+      <CharacterCard key={character} character={character} />
     ));
   };
 
