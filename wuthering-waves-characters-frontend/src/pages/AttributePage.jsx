@@ -4,6 +4,8 @@ import { fetchAttribute } from "../api/http";
 import { useQuery } from "@tanstack/react-query";
 import constants from "../constants/constants";
 import CharacterCard from "../components/Characters/CharacterCard";
+import Pager from "../components/UI/Pager";
+import { useState } from "react";
 
 export default function AttributePage() {
   const { attribute } = useParams();
@@ -12,6 +14,22 @@ export default function AttributePage() {
     queryFn: () => fetchAttribute({ attribute }),
     staleTime: constants.STALE_TIME,
   });
+
+  const charactersPerPage = 3;
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const indexOfLastCharacter = currentPage * charactersPerPage;
+  const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
+  let currentCharacters = [];
+  let totalPages = 0;
+  if (data) {
+    currentCharacters = data.characters.slice(
+      indexOfFirstCharacter,
+      indexOfLastCharacter
+    );
+    totalPages = Math.ceil(data.characters.length / charactersPerPage);
+  }
 
   return (
     <main className="flex flex-col min-h-screen">
@@ -27,11 +45,18 @@ export default function AttributePage() {
         {isError && <p>{error.message}</p>}
         {data && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
-            {data.characters.map((character) => (
+            {currentCharacters.map((character) => (
               <CharacterCard key={character.name} character={character.name} />
             ))}
           </div>
         )}
+        <div className="flex justify-center mt-5">
+          <Pager
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
       </div>
     </main>
   );
