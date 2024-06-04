@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import constants from "../../constants/constants";
 import { FaRegSun, FaRegMoon, FaBars, FaHome, FaStar } from "react-icons/fa";
 import { IoMdStats } from "react-icons/io";
+import { LuSwords } from "react-icons/lu";
+import logo from "../../assets/logo.png";
 
 export default function Header() {
   const primaryThemeName = constants.PRIMARY_STYLE;
@@ -11,18 +13,18 @@ export default function Header() {
   const logoHeight = 80;
   const logoWidth = 160;
 
-  const [theme, setTheme] = useState(localStorage.getItem("genshin-theme"));
+  const [theme, setTheme] = useState(localStorage.getItem("wuwa-chars-theme"));
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
-    const theme = localStorage.getItem("genshin-theme");
+    const theme = localStorage.getItem("wuwa-chars-theme");
     if (theme) {
       document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("genshin-theme", theme);
+      localStorage.setItem("wuwa-chars-theme", theme);
       setTheme(theme);
     } else {
       document.documentElement.setAttribute("data-theme", secondaryThemeName);
-      localStorage.setItem("genshin-theme", secondaryThemeName);
+      localStorage.setItem("wuwa-chars-theme", secondaryThemeName);
       setTheme(secondaryThemeName);
     }
   }, []);
@@ -33,14 +35,14 @@ export default function Header() {
 
     if (
       theme === secondaryThemeName ||
-      localStorage.getItem("genshin-theme") === secondaryThemeName
+      localStorage.getItem("wuwa-chars-theme") === secondaryThemeName
     ) {
       root.setAttribute("data-theme", primaryThemeName);
-      localStorage.setItem("genshin-theme", primaryThemeName);
+      localStorage.setItem("wuwa-chars-theme", primaryThemeName);
       setTheme(primaryThemeName);
     } else {
       root.setAttribute("data-theme", secondaryThemeName);
-      localStorage.setItem("genshin-theme", secondaryThemeName);
+      localStorage.setItem("wuwa-chars-theme", secondaryThemeName);
       setTheme(secondaryThemeName);
     }
   }
@@ -57,7 +59,7 @@ export default function Header() {
           className="text-primary-content hover:text-base-100 text-xl font-bold ml-5"
         >
           <img
-            src="https://wutheringwaves.kurogames.com/static4.0/assets/logo-en-398c8e54.png"
+            src={logo}
             alt="logo"
             className="inline p-2"
             width={logoWidth}
@@ -96,6 +98,15 @@ export default function Header() {
             >
               <IoMdStats className="inline" />
               Attributes
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/weapons"
+              className="hover:text-base-100 flex items-center gap-1"
+            >
+              <LuSwords className="inline" />
+              Weapons
             </Link>
           </li>
           <button

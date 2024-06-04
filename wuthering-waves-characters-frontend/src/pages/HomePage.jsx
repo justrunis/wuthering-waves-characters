@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "../components/UI/Header";
 import { motion } from "framer-motion";
+import logo from "../assets/logo.png";
 
 export default function Home() {
   const imageWidth = 400;
@@ -16,7 +17,7 @@ export default function Home() {
         className="flex flex-col items-center justify-center flex-1 bg-secondary p-6"
       >
         <img
-          src="https://wutheringwaves.kurogames.com/static4.0/assets/logo-en-398c8e54.png"
+          src={logo}
           alt="logo"
           width={imageWidth}
           height={imageHeight}
@@ -45,8 +46,8 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="flex items-center justify-center w-36 h-16 btn btn-primary"
           >
-            <Link to="/artifacts" className="text-2xl font-bold">
-              Echos
+            <Link to="/attributes" className="text-2xl font-bold">
+              Attributes
             </Link>
           </motion.div>
         </div>
@@ -67,8 +68,8 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.5 }}
             className="flex items-center justify-center w-36 h-16 btn btn-primary"
           >
-            <Link to="/bosses" className="text-2xl font-bold">
-              Bosses
+            <Link to="/echos" className="text-2xl font-bold">
+              Echos
             </Link>
           </motion.div>
         </div>
