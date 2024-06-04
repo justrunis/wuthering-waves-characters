@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCharacter } from "../api/http";
 import constants from "../constants/constants";
 import { motion } from "framer-motion";
+import LoadingIndicator from "../components/UI/LoadingIndicator";
+import Image from "../components/UI/Image";
 
 export default function CharacterPage() {
   const { character } = useParams();
@@ -17,33 +19,37 @@ export default function CharacterPage() {
     staleTime: constants.STALE_TIME,
   });
 
-  if (data) {
-    console.log(data);
-  }
-
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
       <motion.div
-        className="bg-base-100 shadow-xl rounded-lg flex-grow"
+        className="shadow-xl rounded-lg flex-grow"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        {isLoading && <p className="text-center">Loading...</p>}
+        {isLoading && (
+          <LoadingIndicator
+            type="spin"
+            color="#2563EB"
+            text="Loading character..."
+            containerClassName="flex flex-col gap-5 items-center justify-center text-primary-content h-screen"
+          />
+        )}
         {isError && <p className="text-center text-error">{error.message}</p>}
         {data && (
-          <div className="container mx-auto mt-5 text-center bg-secondary text-scondary-content rounded-lg p-16 flex-grow">
+          <div className="container mx-auto mt-5 text-center bg-secondary text-neutral-content rounded-lg p-16 flex-grow">
             <motion.h1
-              className="text-2xl font-bold mb-4 text-scondary-content"
+              className="text-2xl font-bold mb-4 text-secondary-content"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
+              whileHover={{ scale: 1.2 }}
             >
               {data.name}
             </motion.h1>
             <motion.p
-              className="text-lg italic mb-4 text-scondary-content"
+              className="text-lg italic mb-4 text-secondary-content"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -51,15 +57,11 @@ export default function CharacterPage() {
               {data.quote}
             </motion.p>
             <motion.div className="flex lg:flex-row flex-col items-center justify-center gap-10">
-              <motion.img
+              <Image
                 src={`${constants.API_URL}characters/${character}/portrait`}
-                alt="Character portrait"
-                className="rounded-full border-4 border-accent"
+                alt="Character full"
                 width={imgWidth}
                 height={imgHeight}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7 }}
               />
               <motion.ul
                 initial={{ opacity: 0 }}
@@ -67,22 +69,58 @@ export default function CharacterPage() {
                 transition={{ delay: 0.9 }}
                 className="flex flex-col gap-2 text-lg text-secondary-content"
               >
-                <motion.li className="text-left" whileHover={{ scale: 1.05 }}>
+                <motion.li
+                  className="text-left"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                >
                   Attribute: {data.attribute}
                 </motion.li>
-                <motion.li className="text-left" whileHover={{ scale: 1.05 }}>
+                <motion.li
+                  className="text-left"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.2 }}
+                >
                   Birthday: {data.birthday}
                 </motion.li>
-                <motion.li className="text-left" whileHover={{ scale: 1.05 }}>
+                <motion.li
+                  className="text-left"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.4 }}
+                >
                   Birthplace: {data.birthplace}
                 </motion.li>
-                <motion.li className="text-left" whileHover={{ scale: 1.05 }}>
+                <motion.li
+                  className="text-left"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.6 }}
+                >
                   Class: {data.class}
                 </motion.li>
-                <motion.li className="text-left" whileHover={{ scale: 1.05 }}>
+                <motion.li
+                  className="text-left"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.8 }}
+                >
                   Rarity: {data.rarity}
                 </motion.li>
-                <motion.li className="text-left" whileHover={{ scale: 1.05 }}>
+                <motion.li
+                  className="text-left"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2 }}
+                >
                   Weapon: {data.weapon}
                 </motion.li>
               </motion.ul>

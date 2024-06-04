@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import constants from "../../constants/constants";
-import { FaRegSun, FaRegMoon, FaBars, FaHome } from "react-icons/fa";
+import { FaRegSun, FaRegMoon, FaBars, FaHome, FaStar } from "react-icons/fa";
+import { IoMdStats } from "react-icons/io";
 
 export default function Header() {
   const primaryThemeName = constants.PRIMARY_STYLE;
@@ -84,7 +85,17 @@ export default function Header() {
               to="/characters"
               className="hover:text-base-100 flex items-center gap-1"
             >
+              <FaStar className="inline" />
               Characters
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/attributes"
+              className="hover:text-base-100 flex items-center gap-1"
+            >
+              <IoMdStats className="inline" />
+              Attributes
             </Link>
           </li>
           <button

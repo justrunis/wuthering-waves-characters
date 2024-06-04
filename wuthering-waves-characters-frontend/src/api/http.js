@@ -84,3 +84,81 @@ export async function fetchCharacter({ character }) {
     }
   }
 }
+
+export async function fetchAttributes() {
+  console.log("CALLING ATTRIBUTES");
+  try {
+    const response = await axios.get(`${URL}attributes`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Request-Headers":
+          "access-control-allow-origin, content-type:",
+      },
+    });
+
+    if (response.status === 400) {
+      const error = new Error(
+        "An error occurred while fetching attributes data"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    if (!response.data) {
+      const error = new Error(
+        "There is no data available for the attributes at the moment"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      return error.response.data;
+    } else {
+      return error;
+    }
+  }
+}
+
+export async function fetchAttribute({ attribute }) {
+  const FULL_URL = `${URL}attributes/${attribute}`;
+  console.log("CALLING ATTRIBUTE");
+  try {
+    const response = await axios.get(FULL_URL, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Request-Headers":
+          "access-control-allow-origin, content-type:",
+      },
+    });
+
+    if (response.status === 400) {
+      const error = new Error(
+        "An error occurred while fetching attribute data"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    if (!response.data) {
+      const error = new Error(
+        "There is no data available for the attribute at the moment"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      return error.response.data;
+    } else {
+      return error;
+    }
+  }
+}

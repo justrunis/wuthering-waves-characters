@@ -8,6 +8,8 @@ import HomePage from "./pages/HomePage";
 import CharactersPage from "./pages/CharactersPage";
 import WeaponsPage from "./pages/WeaponsPage";
 import CharacterPage from "./pages/CharacterPage";
+import AttributesPage from "./pages/AttributesPage";
+import AttributePage from "./pages/AttributePage";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/characters" element={<CharactersPage />} />
             <Route path="/weapons" element={<WeaponsPage />} />
             <Route path="/characters/:character" element={<CharacterPage />} />
+            <Route path="/attributes" element={<AttributesPage />} />
+            <Route path="/attributes/:attribute" element={<AttributePage />} />
           </Routes>
         </BrowserRouter>
         <ToastContainer />
