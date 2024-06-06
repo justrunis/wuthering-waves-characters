@@ -1,32 +1,31 @@
-import React, { useState } from "react";
 import Header from "../components/UI/Header";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCharacters } from "../api/http";
-import CharacterCard from "../components/Characters/CharacterCard";
+import { fetchEchoes } from "../api/http";
 import constants from "../constants/constants";
 import Pager from "../components/UI/Pager";
+import { useState } from "react";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
+import EchoesCard from "../components/Echoes/EchoesCard";
 
-export default function CharactersPage() {
+export default function EchoesPage() {
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["characters"],
-    queryFn: fetchCharacters,
+    queryKey: ["echoes"],
+    queryFn: fetchEchoes,
     staleTime: constants.STALE_TIME,
   });
 
-  const charactersPerPage = 3;
+  const echoesPerPage = 3;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const indexOfLastCharacter = currentPage * charactersPerPage;
-  const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
-  let currentCharacters = [];
+
+  const indexOfLastEcho = currentPage * echoesPerPage;
+  const indexOfFirstEcho = indexOfLastEcho - echoesPerPage;
+
+  let currentEchoes = [];
   let totalPages = 0;
   if (data) {
-    currentCharacters = data.characters.slice(
-      indexOfFirstCharacter,
-      indexOfLastCharacter
-    );
-    totalPages = Math.ceil(data.characters.length / charactersPerPage);
+    currentEchoes = data.echoes.slice(indexOfFirstEcho, indexOfLastEcho);
+    totalPages = Math.ceil(data.echoes.length / echoesPerPage);
   }
 
   return (
@@ -40,12 +39,12 @@ export default function CharactersPage() {
           className="text-3xl font-bold text-center mt-5"
           data-testid="characters-title"
         >
-          Characters
+          Echoes
         </h1>
       </div>
       {isLoading && (
         <LoadingIndicator
-          text="Loading characters..."
+          text="Loading echoes..."
           type="spin"
           color="#000"
           height={50}
@@ -55,16 +54,12 @@ export default function CharactersPage() {
       {isError && <p>{error.message}</p>}
       {data && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
-          {currentCharacters.map((character, index) => (
-            <CharacterCard
-              key={character}
-              character={character}
-              delay={index * 0.2}
-            />
+          {currentEchoes.map((echo, index) => (
+            <EchoesCard key={echo} echo={echo} delay={index * 0.1} />
           ))}
         </div>
       )}
-      <div className="flex justify-center mt-5">
+      <div className="flex justify-center">
         <Pager
           totalPages={totalPages}
           currentPage={currentPage}

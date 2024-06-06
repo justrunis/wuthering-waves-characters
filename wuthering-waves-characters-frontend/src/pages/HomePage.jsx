@@ -68,7 +68,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.5 }}
             className="flex items-center justify-center w-36 h-16 btn btn-primary"
           >
-            <Link to="/echos" className="text-2xl font-bold">
+            <Link to="/echoes" className="text-2xl font-bold">
               Echos
             </Link>
           </motion.div>

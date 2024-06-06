@@ -12,6 +12,8 @@ import WeaponPage from "./pages/WeaponPage";
 import WeaponDetailsPage from "./pages/WeaponDetailsPage";
 import AttributesPage from "./pages/AttributesPage";
 import AttributePage from "./pages/AttributePage";
+import EchoesPage from "./pages/EchoesPage";
+import EchoDetailsPage from "./pages/EchoDetailsPage";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
             />
             <Route path="/attributes" element={<AttributesPage />} />
             <Route path="/attributes/:attribute" element={<AttributePage />} />
+            <Route path="/echoes" element={<EchoesPage />} />
+            <Route path="/echoes/:echo" element={<EchoDetailsPage />} />
           </Routes>
         </BrowserRouter>
         <ToastContainer />

@@ -279,3 +279,122 @@ export async function fetchWeaponDetails({ weaponType, weapon }) {
     }
   }
 }
+
+export async function fetchEchoes() {
+  const FULL_URL = `${URL}echoes`;
+  console.log("CALLING ECHOES");
+
+  try {
+    const response = await axios.get(FULL_URL, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Request-Headers":
+          "access-control-allow-origin, content-type:",
+      },
+    });
+
+    if (response.status === 400) {
+      const error = new Error("An error occurred while fetching echoes data");
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    if (!response.data) {
+      const error = new Error(
+        "There is no data available for the echoes at the moment"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      return error.response.data;
+    } else {
+      return error;
+    }
+  }
+}
+
+export async function fetchEcho({ echo }) {
+  const FULL_URL = `${URL}echoes/${echo}`;
+  console.log("CALLING ECHO");
+
+  try {
+    const response = await axios.get(FULL_URL, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Request-Headers":
+          "access-control-allow-origin, content-type:",
+      },
+    });
+
+    if (response.status === 400) {
+      const error = new Error("An error occurred while fetching echo data");
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    if (!response.data) {
+      const error = new Error(
+        "There is no data available for the echo at the moment"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      return error.response.data;
+    } else {
+      return error;
+    }
+  }
+}
+
+export async function fetchEchoSonataEffects({ effect }) {
+  const FULL_URL = `${URL}echoes/sonatas/${effect}`;
+  console.log("CALLING ECHO SONATA EFFECTS");
+
+  try {
+    const response = await axios.get(FULL_URL, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Request-Headers":
+          "access-control-allow-origin, content-type:",
+      },
+    });
+
+    if (response.status === 400) {
+      const error = new Error(
+        "An error occurred while fetching echo sonata effects data"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    if (!response.data) {
+      const error = new Error(
+        "There is no data available for the echo sonata effects at the moment"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      return error.response.data;
+    } else {
+      return error;
+    }
+  }
+}
