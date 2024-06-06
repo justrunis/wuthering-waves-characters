@@ -38,93 +38,80 @@ export default function CharacterPage() {
         )}
         {isError && <p className="text-center text-error">{error.message}</p>}
         {data && (
-          <div className="container mx-auto mt-5 text-center bg-secondary text-neutral-content rounded-lg p-16 flex-grow">
-            <motion.h1
-              className="text-2xl font-bold mb-4 text-secondary-content"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              whileHover={{ scale: 1.2 }}
-            >
-              {data.name}
-            </motion.h1>
-            <motion.p
-              className="text-lg italic mb-4 text-secondary-content"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              {data.quote}
-            </motion.p>
-            <motion.div className="flex lg:flex-row flex-col items-center justify-center gap-10">
+          <div className="container mx-auto mt-5 text-center bg-secondary text-neutral-content rounded-lg flex-grow">
+            <div className="card-body flex flex-row gap-5">
+              <div className="stats shadow w-full flex flex-col text-center">
+                <div className="stat p-4 flex-1 gap-2">
+                  <div className="stat-value text-center sm:text-left text-sm md:text-3xl">
+                    {data.name}
+                  </div>
+                  <div className="stat-title text-center sm:text-left break-words text-xs sm:text-sm md:text-base">
+                    {data.quote}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="card-body flex flex-col lg:flex-row gap-5">
+              <div className="stats shadow w-full flex flex-col text-center">
+                <div className="stat p-4 flex-1">
+                  <div className="stat-title text-center sm:text-left text-sm md:text-md">
+                    Attribute
+                  </div>
+                  <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
+                    {data.attribute}
+                  </div>
+                </div>
+                <div className="stat p-4 flex-1">
+                  <div className="stat-title text-center sm:text-left text-sm md:text-md">
+                    Birthday
+                  </div>
+                  <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
+                    {data.birthday}
+                  </div>
+                </div>
+                <div className="stat p-4 flex-1">
+                  <div className="stat-title text-center sm:text-left text-sm md:text-md">
+                    Birthplace
+                  </div>
+                  <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
+                    {data.birthplace}
+                  </div>
+                </div>
+                <div className="stat p-4 flex-1">
+                  <div className="stat-title text-center sm:text-left text-sm md:text-md">
+                    Class
+                  </div>
+                  <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
+                    {data.class}
+                  </div>
+                </div>
+                <div className="stat p-4 flex-1">
+                  <div className="stat-title text-center sm:text-left text-sm md:text-md">
+                    Rarity
+                  </div>
+                  <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
+                    {"⭐".repeat(data.rarity)}
+                  </div>
+                </div>
+                <div className="stat p-4 flex-1">
+                  <div className="stat-title text-center sm:text-left text-sm md:text-md">
+                    Weapon
+                  </div>
+                  <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
+                    {data.weapon}
+                  </div>
+                </div>
+              </div>
               <Image
                 src={`${constants.API_URL}characters/${character}/portrait`}
                 alt="Character full"
                 width={imgWidth}
                 height={imgHeight}
+                className="shadow-lg border-4 border-primary rounded-full"
               />
-              <motion.ul
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-                className="flex flex-col gap-2 text-lg text-secondary-content"
-              >
-                <motion.li
-                  className="text-left"
-                  whileHover={{ scale: 1.05 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1 }}
-                >
-                  Attribute: {data.attribute}
-                </motion.li>
-                <motion.li
-                  className="text-left"
-                  whileHover={{ scale: 1.05 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  Birthday: {data.birthday}
-                </motion.li>
-                <motion.li
-                  className="text-left"
-                  whileHover={{ scale: 1.05 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.4 }}
-                >
-                  Birthplace: {data.birthplace}
-                </motion.li>
-                <motion.li
-                  className="text-left"
-                  whileHover={{ scale: 1.05 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.6 }}
-                >
-                  Class: {data.class}
-                </motion.li>
-                <motion.li
-                  className="text-left"
-                  whileHover={{ scale: 1.05 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.8 }}
-                >
-                  Rarity: {data.rarity}
-                </motion.li>
-                <motion.li
-                  className="text-left"
-                  whileHover={{ scale: 1.05 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 2 }}
-                >
-                  Weapon: {data.weapon}
-                </motion.li>
-              </motion.ul>
-            </motion.div>
+            </div>
+            <motion.div className="flex lg:flex-row flex-col items-center justify-center gap-10"></motion.div>
           </div>
         )}
       </motion.div>

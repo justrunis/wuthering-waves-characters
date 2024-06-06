@@ -33,7 +33,6 @@ export default function WeaponDetailsPage() {
         {isError && <p>Error: {error.message}</p>}
         {data && (
           <>
-            {console.log(data)}
             <div className="card-body">
               <div className="stats shadow w-full flex flex-col lg:flex-row">
                 <div className="stat p-4 flex-1">
