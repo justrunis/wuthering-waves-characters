@@ -31,8 +31,12 @@ export default function AttributesPage() {
         {isError && <p>Error: {error.message}</p>}
         {data && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
-            {data.attributes.map((attribute) => (
-              <AttributesCard key={attribute} attribute={attribute} />
+            {data.attributes.map((attribute, index) => (
+              <AttributesCard
+                key={attribute}
+                attribute={attribute}
+                delay={index * 0.2}
+              />
             ))}
           </div>
         )}

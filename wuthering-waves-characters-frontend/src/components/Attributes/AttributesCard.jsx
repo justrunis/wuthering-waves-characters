@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
 import Image from "../UI/Image";
 import constants from "../../constants/constants";
+import { motion } from "framer-motion";
 
-export default function AttributesCard({ attribute }) {
+export default function AttributesCard({ attribute, delay }) {
   return (
-    <div className="bg-secondary rounded-lg shadow-md p-8 flex flex-col items-center">
+    <motion.div
+      className="bg-secondary rounded-lg shadow-md p-8 flex flex-col items-center"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        type: "tween",
+        stiffness: 100,
+        delay: delay,
+      }}
+    >
       <h1 className="text-2xl font-bold text-center">{attribute}</h1>
       <Image
         src={`${constants.API_URL}attributes/${attribute}/icon`}
@@ -18,6 +28,6 @@ export default function AttributesCard({ attribute }) {
           View Characters
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }

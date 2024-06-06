@@ -10,27 +10,31 @@ export default function WeaponsPage() {
     queryFn: fetchWeapons,
   });
 
-  if (data) {
-    console.log(data);
-  }
-
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex flex-col items-center justify-center m-5">
-        <h1 className="text-3xl font-bold text-center">Weapons</h1>
+      <div
+        className="flex flex-col items-center justify-center p-6 flex-grow"
+        data-testid="weapons-page"
+      >
+        <h1 className="text-3xl font-bold text-center p-6">Weapons</h1>
+        {isLoading && (
+          <LoadingIndicator
+            className="m-5"
+            width={50}
+            height={50}
+            color="gray"
+          />
+        )}
+        {isError && <p>Error: {error.message}</p>}
+        {data && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
+            {data.types.map((weapon, index) => (
+              <WeaponCard key={weapon} weapon={weapon} delay={index * 0.2} />
+            ))}
+          </div>
+        )}
       </div>
-      {isLoading && (
-        <LoadingIndicator className="m-5" width={50} height={50} color="gray" />
-      )}
-      {isError && <p>Error: {error.message}</p>}
-      {data && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
-          {data.types.map((weapon) => (
-            <WeaponCard key={weapon.name} weapon={weapon} />
-          ))}
-        </div>
-      )}
     </main>
   );
 }

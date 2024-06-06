@@ -238,3 +238,44 @@ export async function fetchWeapon({ weapon }) {
     }
   }
 }
+
+export async function fetchWeaponDetails({ weaponType, weapon }) {
+  const FULL_URL = `${URL}weapons/${weaponType}/${weapon}`;
+  console.log("CALLING WEAPON DETAILS");
+
+  try {
+    const response = await axios.get(FULL_URL, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Request-Headers":
+          "access-control-allow-origin, content-type:",
+      },
+    });
+
+    if (response.status === 400) {
+      const error = new Error(
+        "An error occurred while fetching weapon details data"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    if (!response.data) {
+      const error = new Error(
+        "There is no data available for the weapon details at the moment"
+      );
+      error.code = response.status;
+      error.info = response.data;
+      throw error;
+    }
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      return error.response.data;
+    } else {
+      return error;
+    }
+  }
+}

@@ -45,8 +45,12 @@ export default function AttributePage() {
         {isError && <p>{error.message}</p>}
         {data && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
-            {currentCharacters.map((character) => (
-              <CharacterCard key={character.name} character={character.name} />
+            {currentCharacters.map((character, index) => (
+              <CharacterCard
+                key={character.name}
+                character={character.name}
+                delay={index * 0.2}
+              />
             ))}
           </div>
         )}

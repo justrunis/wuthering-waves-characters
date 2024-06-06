@@ -5,6 +5,8 @@ import { fetchWeapon } from "../api/http";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
 import IndividualWeaponCard from "../components/Weapons/IndividualWeaponCard";
 import Pager from "../components/UI/Pager";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 export default function WeaponPage() {
   const { weapon: weaponType } = useParams();
@@ -13,6 +15,18 @@ export default function WeaponPage() {
     queryKey: ["weapon", { weapon: weaponType }],
     queryFn: () => fetchWeapon({ weapon: weaponType }),
   });
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const weaponsPerPage = 3;
+  const indexOfLastWeapon = currentPage * weaponsPerPage;
+  const indexOfFirstWeapon = indexOfLastWeapon - weaponsPerPage;
+  let currentWeapons = [];
+  let totalPages = 0;
+  if (data) {
+    currentWeapons = data.weapons.slice(indexOfFirstWeapon, indexOfLastWeapon);
+    totalPages = Math.ceil(data.weapons.length / weaponsPerPage);
+  }
 
   return (
     <main className="flex flex-col min-h-screen">
@@ -29,16 +43,24 @@ export default function WeaponPage() {
         )}
         {isError && <p>Error: {error.message}</p>}
         {data && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 px-16 g-5">
-            {data.weapons.map((weapon) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
+            {currentWeapons.map((weapon, index) => (
               <IndividualWeaponCard
-                key={weapon.name}
+                key={weapon}
                 weapon={weapon}
                 weaponType={weaponType}
+                delay={index * 0.2}
               />
             ))}
           </div>
         )}
+        <div className="flex justify-center mt-5" data-testid="weapons-pager">
+          <Pager
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
       </div>
     </main>
   );

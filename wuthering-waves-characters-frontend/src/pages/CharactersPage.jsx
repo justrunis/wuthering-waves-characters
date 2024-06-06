@@ -46,8 +46,12 @@ export default function CharactersPage() {
       {isError && <p>{error.message}</p>}
       {data && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
-          {currentCharacters.map((character) => (
-            <CharacterCard key={character} character={character} />
+          {currentCharacters.map((character, index) => (
+            <CharacterCard
+              key={character}
+              character={character}
+              delay={index * 0.2}
+            />
           ))}
         </div>
       )}

@@ -9,6 +9,7 @@ import CharactersPage from "./pages/CharactersPage";
 import CharacterPage from "./pages/CharacterPage";
 import WeaponsPage from "./pages/WeaponsPage";
 import WeaponPage from "./pages/WeaponPage";
+import WeaponDetailsPage from "./pages/WeaponDetailsPage";
 import AttributesPage from "./pages/AttributesPage";
 import AttributePage from "./pages/AttributePage";
 
@@ -23,6 +24,10 @@ function App() {
             <Route path="/characters/:character" element={<CharacterPage />} />
             <Route path="/weapons" element={<WeaponsPage />} />
             <Route path="/weapons/:weapon" element={<WeaponPage />} />
+            <Route
+              path="/weapons/:weaponType/:weapon"
+              element={<WeaponDetailsPage />}
+            />
             <Route path="/attributes" element={<AttributesPage />} />
             <Route path="/attributes/:attribute" element={<AttributePage />} />
           </Routes>
