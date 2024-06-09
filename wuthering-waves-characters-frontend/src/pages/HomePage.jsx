@@ -69,7 +69,7 @@ export default function Home() {
             className="flex items-center justify-center w-36 h-16 btn btn-primary"
           >
             <Link to="/echoes" className="text-2xl font-bold">
-              Echos
+              Echoes
             </Link>
           </motion.div>
         </div>

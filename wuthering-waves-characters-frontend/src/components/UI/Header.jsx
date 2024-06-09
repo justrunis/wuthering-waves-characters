@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import constants from "../../constants/constants";
 import { FaRegSun, FaRegMoon, FaBars, FaHome, FaStar } from "react-icons/fa";
 import { IoMdStats } from "react-icons/io";
+import { GiMonsterGrasp } from "react-icons/gi";
 import { LuSwords } from "react-icons/lu";
 import logo from "../../assets/logo.png";
 
@@ -114,6 +115,7 @@ export default function Header() {
               to="/echoes"
               className="hover:text-base-100 flex items-center gap-1"
             >
+              <GiMonsterGrasp className="inline" />
               Echoes
             </Link>
           </li>
