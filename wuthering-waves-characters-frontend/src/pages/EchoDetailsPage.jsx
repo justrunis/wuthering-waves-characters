@@ -15,10 +15,6 @@ export default function EchoDetailsPage() {
     queryFn: () => fetchEcho({ echo }),
   });
 
-  if (data) {
-    console.log(data);
-  }
-
   return (
     <main className="flex flex-col min-h-screen">
       <Header />

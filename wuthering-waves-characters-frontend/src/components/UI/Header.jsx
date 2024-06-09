@@ -109,6 +109,14 @@ export default function Header() {
               Weapons
             </Link>
           </li>
+          <li>
+            <Link
+              to="/echoes"
+              className="hover:text-base-100 flex items-center gap-1"
+            >
+              Echoes
+            </Link>
+          </li>
           <button
             onClick={toggleTheme}
             className="hover:text-base-100 flex items-center gap-1"

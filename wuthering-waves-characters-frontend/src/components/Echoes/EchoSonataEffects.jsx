@@ -8,10 +8,6 @@ export default function EchoSonataEffects({ effect }) {
     queryFn: () => fetchEchoSonataEffects({ effect }),
   });
 
-  if (data) {
-    console.log(data);
-  }
-
   return (
     <div className="flex flex-col items-start max-w-screen-sm justify-center m-5">
       {isLoading && (
