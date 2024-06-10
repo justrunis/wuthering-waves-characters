@@ -6,6 +6,7 @@ import CharacterCard from "../components/Characters/CharacterCard";
 import constants from "../constants/constants";
 import Pager from "../components/UI/Pager";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
+import ErrorIndicator from "../components/UI/ErrorIndicator";
 
 export default function CharactersPage() {
   const { data, isLoading, isError, error } = useQuery({
@@ -44,16 +45,24 @@ export default function CharactersPage() {
         </h1>
       </div>
       {isLoading && (
-        <LoadingIndicator
-          text="Loading characters..."
-          type="spin"
-          color="#000"
-          height={50}
-          width={50}
+        <div className="flex justify-center">
+          <LoadingIndicator
+            containerClassName="flex flex-col items-center justify-center m-5"
+            text="Loading characters..."
+            type="spin"
+            color="red"
+            height={50}
+            width={50}
+          />
+        </div>
+      )}
+      {isError && (
+        <ErrorIndicator
+          title="An error occurred"
+          message={error?.message || "Failed to fetch characters."}
         />
       )}
-      {isError && <p>{error.message}</p>}
-      {data && (
+      {data && data?.characters && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
           {currentCharacters.map((character, index) => (
             <CharacterCard

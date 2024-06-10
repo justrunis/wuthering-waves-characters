@@ -12,9 +12,10 @@ export default function EchoSonataEffects({ effect }) {
     <div className="flex flex-col items-start max-w-screen-sm justify-center m-5">
       {isLoading && (
         <LoadingIndicator
+          containerClassName="flex flex-col items-center justify-center m-5"
           text="Loading echo sonata effects..."
           type="spin"
-          color="#000"
+          color="red"
           height={50}
           width={50}
         />

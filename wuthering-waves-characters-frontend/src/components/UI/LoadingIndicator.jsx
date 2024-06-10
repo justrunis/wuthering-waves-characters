@@ -9,7 +9,7 @@ export default function LoadingIndicator({
   return (
     <div className={containerClassName}>
       <motion.h2
-        className="text-2xl text-base-content"
+        className="text-2xl text-base-content m-5"
         animate={{
           y: [0, 10, 0],
         }}

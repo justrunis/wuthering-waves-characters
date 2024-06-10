@@ -3,10 +3,11 @@ import AttributesCard from "../components/Attributes/AttributesCard";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAttributes } from "../api/http";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
+import ErrorIndicator from "../components/UI/ErrorIndicator";
 
 export default function AttributesPage() {
   const { data, error, isError, isLoading } = useQuery({
-    queryKey: "attributes",
+    queryKey: ["attributes"],
     queryFn: fetchAttributes,
   });
 
@@ -28,8 +29,13 @@ export default function AttributesPage() {
             color="gray"
           />
         )}
-        {isError && <p>Error: {error.message}</p>}
-        {data && (
+        {isError && (
+          <ErrorIndicator
+            title="An error occurred"
+            message={error?.message || "Failed to fetch attributes."}
+          />
+        )}
+        {data && data?.attributes ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
             {data.attributes.map((attribute, index) => (
               <AttributesCard
@@ -38,6 +44,13 @@ export default function AttributesPage() {
                 delay={index * 0.2}
               />
             ))}
+          </div>
+        ) : (
+          <div>
+            <ErrorIndicator
+              title="No attributes found"
+              message="Failed to fetch attributes."
+            />
           </div>
         )}
       </div>
