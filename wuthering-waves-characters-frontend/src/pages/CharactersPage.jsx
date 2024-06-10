@@ -15,7 +15,7 @@ export default function CharactersPage() {
     staleTime: constants.STALE_TIME,
   });
 
-  const charactersPerPage = 3;
+  const charactersPerPage = 6;
 
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastCharacter = currentPage * charactersPerPage;

@@ -18,7 +18,7 @@ export default function WeaponPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const weaponsPerPage = 3;
+  const weaponsPerPage = 8;
   const indexOfLastWeapon = currentPage * weaponsPerPage;
   const indexOfFirstWeapon = indexOfLastWeapon - weaponsPerPage;
   let currentWeapons = [];
@@ -43,7 +43,7 @@ export default function WeaponPage() {
         )}
         {isError && <p>Error: {error.message}</p>}
         {data && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-16 g-5">
             {currentWeapons.map((weapon, index) => (
               <IndividualWeaponCard
                 key={weapon}
