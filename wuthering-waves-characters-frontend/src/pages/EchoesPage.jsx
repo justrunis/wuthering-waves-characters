@@ -14,7 +14,7 @@ export default function EchoesPage() {
     staleTime: constants.STALE_TIME,
   });
 
-  const echoesPerPage = 3;
+  const echoesPerPage = 6;
 
   const [currentPage, setCurrentPage] = useState(1);
 
