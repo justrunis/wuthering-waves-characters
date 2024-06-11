@@ -62,7 +62,7 @@ export default function WeaponPage() {
             ))}
           </div>
         )}
-        {currentWeapons.length >= weaponsPerPage && (
+        {totalPages > 1 && (
           <div className="flex justify-center m-5">
             <Pager
               totalPages={totalPages}

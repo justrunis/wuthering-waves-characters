@@ -72,7 +72,7 @@ export default function EchoesPage() {
             ))}
           </div>
         )}
-        {currentEchoes.length >= echoesPerPage && (
+        {totalPages > 1 && (
           <div className="flex justify-center m-5">
             <Pager
               totalPages={totalPages}

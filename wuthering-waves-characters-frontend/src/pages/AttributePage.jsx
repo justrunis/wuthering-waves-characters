@@ -72,7 +72,7 @@ export default function AttributePage() {
             ))}
           </div>
         )}
-        {currentCharacters.length >= charactersPerPage && (
+        {totalPages > 1 && (
           <div className="flex justify-center m-5">
             <Pager
               totalPages={totalPages}
