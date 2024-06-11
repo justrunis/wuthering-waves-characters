@@ -1,4 +1,5 @@
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import AttributesCard from "../components/Attributes/AttributesCard";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAttributes } from "../api/http";
@@ -49,6 +50,7 @@ export default function AttributesPage() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

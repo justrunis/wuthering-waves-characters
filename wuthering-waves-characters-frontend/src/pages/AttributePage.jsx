@@ -1,4 +1,5 @@
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { useParams } from "react-router-dom";
 import { fetchAttribute } from "../api/http";
 import { useQuery } from "@tanstack/react-query";
@@ -71,7 +72,7 @@ export default function AttributePage() {
           </div>
         )}
         {currentCharacters.length >= charactersPerPage && (
-          <div className="flex justify-center mt-5">
+          <div className="flex justify-center m-5">
             <Pager
               totalPages={totalPages}
               currentPage={currentPage}
@@ -80,6 +81,7 @@ export default function AttributePage() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

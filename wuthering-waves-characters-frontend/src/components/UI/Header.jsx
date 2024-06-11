@@ -53,7 +53,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-primary py-4 text-primary-content flex justify-between p-4">
+    <header className="bg-gradient-to-r from-secondary to-primary text-primary-content flex justify-between p-4">
       <div className="flex flex-row items-center">
         <Link
           to="/"

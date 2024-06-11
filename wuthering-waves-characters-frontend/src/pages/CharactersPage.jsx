@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCharacters } from "../api/http";
 import CharacterCard from "../components/Characters/CharacterCard";
@@ -34,7 +35,7 @@ export default function CharactersPage() {
     <main className="flex flex-col min-h-screen">
       <Header />
       <div
-        className="flex flex-col items-center justify-center m-5"
+        className="flex flex-col items-center justify-center flex-1 p-6"
         data-testid="characters-page"
       >
         <h1
@@ -73,13 +74,14 @@ export default function CharactersPage() {
           ))}
         </div>
       )}
-      <div className="flex justify-center mt-5">
+      <div className="flex justify-center m-5">
         <Pager
           totalPages={totalPages}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
       </div>
+      <Footer />
     </main>
   );
 }

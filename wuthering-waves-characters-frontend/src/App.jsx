@@ -14,6 +14,7 @@ import AttributesPage from "./pages/AttributesPage";
 import AttributePage from "./pages/AttributePage";
 import EchoesPage from "./pages/EchoesPage";
 import EchoDetailsPage from "./pages/EchoDetailsPage";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/attributes/:attribute" element={<AttributePage />} />
             <Route path="/echoes" element={<EchoesPage />} />
             <Route path="/echoes/:echo" element={<EchoDetailsPage />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
         <ToastContainer />

@@ -1,4 +1,5 @@
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { fetchWeapons } from "../api/http";
 import { useQuery } from "@tanstack/react-query";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
@@ -43,6 +44,7 @@ export default function WeaponsPage() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

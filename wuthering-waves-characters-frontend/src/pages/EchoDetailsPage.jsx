@@ -1,4 +1,5 @@
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Image from "../components/UI/Image";
@@ -104,6 +105,7 @@ export default function EchoDetailsPage() {
           Back to Echoes
         </Link>
       </div>
+      <Footer />
     </main>
   );
 }

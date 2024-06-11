@@ -1,4 +1,5 @@
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCharacter } from "../api/http";
@@ -123,6 +124,7 @@ export default function CharacterPage() {
           </div>
         )}
       </motion.div>
+      <Footer />
     </main>
   );
 }

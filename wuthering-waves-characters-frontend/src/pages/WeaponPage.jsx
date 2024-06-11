@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeapon } from "../api/http";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
@@ -61,7 +62,7 @@ export default function WeaponPage() {
             ))}
           </div>
         )}
-        <div className="flex justify-center mt-5" data-testid="weapons-pager">
+        <div className="flex justify-center m-5">
           <Pager
             totalPages={totalPages}
             currentPage={currentPage}
@@ -69,6 +70,7 @@ export default function WeaponPage() {
           />
         </div>
       </div>
+      <Footer />
     </main>
   );
 }

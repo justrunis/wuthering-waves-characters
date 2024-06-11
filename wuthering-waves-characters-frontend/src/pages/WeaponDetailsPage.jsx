@@ -4,6 +4,7 @@ import LoadingIndicator from "../components/UI/LoadingIndicator";
 import ErrorIndicator from "../components/UI/ErrorIndicator";
 import constants from "../constants/constants";
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Slider from "../components/UI/Slider";
@@ -132,6 +133,7 @@ export default function WeaponDetailsPage() {
           </>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

@@ -1,4 +1,5 @@
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { fetchEchoes } from "../api/http";
 import constants from "../constants/constants";
@@ -80,13 +81,14 @@ export default function EchoesPage() {
           ))}
         </div>
       )}
-      <div className="flex justify-center mt-5">
+      <div className="flex justify-center m-5">
         <Pager
           totalPages={totalPages}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
       </div>
+      <Footer />
     </main>
   );
 }

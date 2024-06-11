@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import Header from "../components/UI/Header";
+import Footer from "../components/UI/Footer";
 import { motion } from "framer-motion";
 import logo from "../assets/logo.png";
 import Image from "../components/UI/Image";
-import yangyangLogo from "../assets/yangyang.gif";
+import jianxinLogo from "../assets/jianxin.gif";
 
 export default function Home() {
   const imageWidth = 400;
@@ -32,7 +33,7 @@ export default function Home() {
           Get to know all the characters from the game Wuthering Waves here!
         </p>
         <Image
-          src={yangyangLogo}
+          src={jianxinLogo}
           alt="yangyang logo"
           width={200}
           height={200}
@@ -83,6 +84,7 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.div>
+      <Footer />
     </main>
   );
 }
