@@ -34,19 +34,9 @@ export default function CharactersPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
-      <div
-        className="flex flex-col items-center justify-center flex-1 p-6"
-        data-testid="characters-page"
-      >
-        <h1
-          className="text-3xl font-bold text-center mt-5"
-          data-testid="characters-title"
-        >
-          Characters
-        </h1>
-      </div>
-      {isLoading && (
-        <div className="flex justify-center">
+      <div className="flex flex-col items-center justify-center p-6 flex-grow">
+        <h1 className="text-3xl font-bold text-center">Characters</h1>
+        {isLoading && (
           <LoadingIndicator
             text="Loading characters..."
             containerClassName="flex flex-col items-center justify-center m-5"
@@ -55,31 +45,33 @@ export default function CharactersPage() {
             height={50}
             color="gray"
           />
-        </div>
-      )}
-      {isError && (
-        <ErrorIndicator
-          title="An error occurred"
-          message={error?.message || "Failed to fetch characters."}
-        />
-      )}
-      {data && data?.characters && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
-          {currentCharacters.map((character, index) => (
-            <CharacterCard
-              key={character}
-              character={character}
-              delay={index * 0.2}
+        )}
+        {isError && (
+          <ErrorIndicator
+            title="An error occurred"
+            message={error?.message || "Failed to fetch characters."}
+          />
+        )}
+        {data && data?.characters && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
+            {currentCharacters.map((character, index) => (
+              <CharacterCard
+                key={character}
+                character={character}
+                delay={index * 0.2}
+              />
+            ))}
+          </div>
+        )}
+        {currentCharacters.length >= charactersPerPage && (
+          <div className="flex justify-center m-5">
+            <Pager
+              totalPages={totalPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
-          ))}
-        </div>
-      )}
-      <div className="flex justify-center m-5">
-        <Pager
-          totalPages={totalPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
+          </div>
+        )}
       </div>
       <Footer />
     </main>

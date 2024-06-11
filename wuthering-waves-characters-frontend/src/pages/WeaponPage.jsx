@@ -62,13 +62,15 @@ export default function WeaponPage() {
             ))}
           </div>
         )}
-        <div className="flex justify-center m-5">
-          <Pager
-            totalPages={totalPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </div>
+        {currentWeapons.length >= weaponsPerPage && (
+          <div className="flex justify-center m-5">
+            <Pager
+              totalPages={totalPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
+        )}
       </div>
       <Footer />
     </main>

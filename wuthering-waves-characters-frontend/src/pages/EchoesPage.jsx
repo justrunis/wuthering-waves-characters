@@ -81,13 +81,15 @@ export default function EchoesPage() {
           ))}
         </div>
       )}
-      <div className="flex justify-center m-5">
-        <Pager
-          totalPages={totalPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      </div>
+      {currentEchoes.length >= echoesPerPage && (
+        <div className="flex justify-center m-5">
+          <Pager
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
+      )}
       <Footer />
     </main>
   );
