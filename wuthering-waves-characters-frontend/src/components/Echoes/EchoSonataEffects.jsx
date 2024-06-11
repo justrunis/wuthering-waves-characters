@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchEchoSonataEffects } from "../../api/http";
 import LoadingIndicator from "../UI/LoadingIndicator";
+import ErrorIndicator from "../UI/ErrorIndicator";
 
 export default function EchoSonataEffects({ effect }) {
   const { data, error, isError, isLoading } = useQuery({
@@ -20,7 +21,12 @@ export default function EchoSonataEffects({ effect }) {
           color="gray"
         />
       )}
-      {isError && <p>{error.message}</p>}
+      {isError && (
+        <ErrorIndicator
+          title="An error occurred"
+          message={error?.message || "Failed to fetch echo sonata effects."}
+        />
+      )}
       {data && (
         <div className="space-y-4 bg-base-100 text-base-content shadow-md p-6 rounded-md">
           <div className="space-y-2 flex flex-row justify-start items-center">
