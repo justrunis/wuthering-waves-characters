@@ -52,10 +52,10 @@ export default function CharacterPage() {
               <div className="stats shadow w-full flex flex-col text-center">
                 <div className="stat p-4 flex-1 gap-2">
                   <div className="stat-value text-center sm:text-left text-sm md:text-3xl">
-                    {data.name}
+                    {data.name ? data.name : "Unknown"}
                   </div>
                   <div className="stat-title text-center sm:text-left break-words text-xs sm:text-sm md:text-base">
-                    {data.quote}
+                    {data.quote ? data.quote : "Unknown"}
                   </div>
                 </div>
               </div>
@@ -68,7 +68,7 @@ export default function CharacterPage() {
                     Attribute
                   </div>
                   <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
-                    {data.attribute}
+                    {data.attribute ? data.attribute : "Unknown"}
                   </div>
                 </div>
                 <div className="stat p-4 flex-1">
@@ -76,7 +76,7 @@ export default function CharacterPage() {
                     Birthday
                   </div>
                   <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
-                    {data.birthday}
+                    {data.birthday ? data.birthday : "Unknown"}
                   </div>
                 </div>
                 <div className="stat p-4 flex-1">
@@ -84,7 +84,7 @@ export default function CharacterPage() {
                     Birthplace
                   </div>
                   <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
-                    {data.birthplace}
+                    {data.birthplace ? data.birthplace : "Unknown"}
                   </div>
                 </div>
                 <div className="stat p-4 flex-1">
@@ -92,7 +92,7 @@ export default function CharacterPage() {
                     Class
                   </div>
                   <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
-                    {data.class}
+                    {data.class ? data.class : "Unknown"}
                   </div>
                 </div>
                 <div className="stat p-4 flex-1">
@@ -100,7 +100,7 @@ export default function CharacterPage() {
                     Rarity
                   </div>
                   <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
-                    {"⭐".repeat(data.rarity)}
+                    {data.rarity ? "⭐".repeat(data.rarity) : "Unknown"}
                   </div>
                 </div>
                 <div className="stat p-4 flex-1">
@@ -108,7 +108,7 @@ export default function CharacterPage() {
                     Weapon
                   </div>
                   <div className="stat-value text-center sm:text-left text-xl md:text-3xl">
-                    {data.weapon}
+                    {data.weapon ? data.weapon : "Unknown"}
                   </div>
                 </div>
               </div>
