@@ -37,13 +37,14 @@ export default function AttributePage() {
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
-      <h1
-        className="text-3xl font-bold text-center mt-5"
-        data-testid="attribute-title"
-      >
-        {attribute} characters
-      </h1>
-      <div className="flex flex-col items-center justify-center p-6">
+      <div className="flex flex-col items-center justify-start m-5 flex-grow">
+        <h1
+          className="text-3xl font-bold text-center mt-5"
+          data-testid="attribute-title"
+        >
+          {attribute} characters
+        </h1>
+
         {isLoading && (
           <LoadingIndicator
             text="Loading characters..."

@@ -5,16 +5,18 @@ import { Link } from "react-router-dom";
 export default function EchoesCard({ echo, delay }) {
   return (
     <motion.div
-      className="bg-base-300 shadow-lg rounded-lg p-4"
+      className="bg-secondary rounded-lg shadow-md p-8 flex flex-col items-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: delay }}
     >
       <h3 className="text-2xl font-bold text-center">{echo}</h3>
       <Image
-        src="https://via.placeholder.com/150"
+        src="https://via.placeholder.com/200"
         alt="echo"
-        className="w-1/2 mx-auto rounded-full p-6"
+        height={200}
+        width={200}
+        className="w-full mx-auto rounded-full p-6"
       />
       <div className="flex justify-center">
         <Link

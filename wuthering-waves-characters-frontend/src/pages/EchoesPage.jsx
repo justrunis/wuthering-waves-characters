@@ -11,7 +11,7 @@ import EchoesCard from "../components/Echoes/EchoesCard";
 import SearchBar from "../components/UI/SearchBar";
 
 export default function EchoesPage() {
-  const echoesPerPage = 6;
+  const echoesPerPage = 8;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,50 +46,42 @@ export default function EchoesPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
-      <div
-        className="flex flex-col items-center justify-center m-5"
-        data-testid="characters-page"
-      >
-        <h1
-          className="text-3xl font-bold text-center mt-5"
-          data-testid="characters-title"
-        >
-          All Echoes
-        </h1>
+      <div className="flex flex-col items-center justify-start m-5 flex-grow">
+        <h1 className="text-3xl font-bold text-center mt-5">All Echoes</h1>
         <SearchBar handleSearch={handleSearch} title={"Search Echoes"} />
-      </div>
-      {isLoading && (
-        <LoadingIndicator
-          text="Loading echoes..."
-          containerClassName="flex flex-col items-center justify-center m-5"
-          className="m-5"
-          width={50}
-          height={50}
-          color="gray"
-        />
-      )}
-      {isError && (
-        <ErrorIndicator
-          title="An error occurred"
-          message={error?.message || "Failed to fetch echoes."}
-        />
-      )}
-      {data && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-16 g-5">
-          {currentEchoes.map((echo, index) => (
-            <EchoesCard key={echo} echo={echo} delay={index * 0.1} />
-          ))}
-        </div>
-      )}
-      {currentEchoes.length >= echoesPerPage && (
-        <div className="flex justify-center m-5">
-          <Pager
-            totalPages={totalPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
+        {isLoading && (
+          <LoadingIndicator
+            text="Loading echoes..."
+            containerClassName="flex flex-col items-center justify-center m-5"
+            className="m-5"
+            width={50}
+            height={50}
+            color="gray"
           />
-        </div>
-      )}
+        )}
+        {isError && (
+          <ErrorIndicator
+            title="An error occurred"
+            message={error?.message || "Failed to fetch echoes."}
+          />
+        )}
+        {data && (
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 px-16 g-5 m-10">
+            {currentEchoes.map((echo, index) => (
+              <EchoesCard key={echo} echo={echo} delay={index * 0.1} />
+            ))}
+          </div>
+        )}
+        {currentEchoes.length >= echoesPerPage && (
+          <div className="flex justify-center m-5">
+            <Pager
+              totalPages={totalPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
+        )}
+      </div>
       <Footer />
     </main>
   );

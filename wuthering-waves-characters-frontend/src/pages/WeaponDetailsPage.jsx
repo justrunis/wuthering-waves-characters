@@ -23,7 +23,7 @@ export default function WeaponDetailsPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex flex-col items-center justify-center m-5">
+      <div className="flex flex-col items-center justify-start m-5 flex-grow">
         {isLoading && (
           <LoadingIndicator
             text="Loading weapon..."

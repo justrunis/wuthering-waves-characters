@@ -25,7 +25,7 @@ export default function CharacterPage() {
     <main className="flex flex-col min-h-screen">
       <Header />
       <motion.div
-        className="shadow-xl rounded-lg flex-grow"
+        className="flex flex-col items-center justify-start m-5 flex-grow"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}

@@ -32,7 +32,7 @@ export default function WeaponPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex flex-col items-center justify-center m-5">
+      <div className="flex flex-col items-center justify-start m-5 flex-grow">
         <h1 className="text-3xl font-bold text-center p-6">{weaponType}</h1>
         {isLoading && (
           <LoadingIndicator

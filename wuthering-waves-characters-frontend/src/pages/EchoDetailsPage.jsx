@@ -20,7 +20,7 @@ export default function EchoDetailsPage() {
     <main className="flex flex-col min-h-screen">
       <Header />
       <div
-        className="flex flex-col items-center justify-center m-5"
+        className="flex flex-col items-center justify-start m-5 flex-grow"
         data-testid="characters-page"
       >
         <h1
@@ -98,12 +98,6 @@ export default function EchoDetailsPage() {
             </div>
           </>
         )}
-      </div>
-
-      <div className="flex justify-center">
-        <Link to="/echoes" className="btn btn-primary text-primary-content m-4">
-          Back to Echoes
-        </Link>
       </div>
       <Footer />
     </main>

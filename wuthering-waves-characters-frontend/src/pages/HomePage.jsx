@@ -17,7 +17,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="flex flex-col items-center justify-center flex-1 p-6"
+        className="flex flex-col items-center justify-start m-5 flex-grow"
       >
         <img
           src={logo}
