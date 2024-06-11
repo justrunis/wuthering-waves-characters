@@ -3,10 +3,10 @@ import Header from "../components/UI/Header";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeapon } from "../api/http";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
+import ErrorIndicator from "../components/UI/ErrorIndicator";
 import IndividualWeaponCard from "../components/Weapons/IndividualWeaponCard";
 import Pager from "../components/UI/Pager";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
 
 export default function WeaponPage() {
   const { weapon: weaponType } = useParams();
@@ -35,13 +35,20 @@ export default function WeaponPage() {
         <h1 className="text-3xl font-bold text-center p-6">{weaponType}</h1>
         {isLoading && (
           <LoadingIndicator
+            text="Loading weapons..."
+            containerClassName="flex flex-col items-center justify-center m-5"
             className="m-5"
             width={50}
             height={50}
             color="gray"
           />
         )}
-        {isError && <p>Error: {error.message}</p>}
+        {isError && (
+          <ErrorIndicator
+            title="An error occurred"
+            message={error?.message || "Failed to fetch weapons."}
+          />
+        )}
         {data && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-16 g-5">
             {currentWeapons.map((weapon, index) => (

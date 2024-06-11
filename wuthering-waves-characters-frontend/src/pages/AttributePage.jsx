@@ -6,6 +6,8 @@ import constants from "../constants/constants";
 import CharacterCard from "../components/Characters/CharacterCard";
 import Pager from "../components/UI/Pager";
 import { useState } from "react";
+import LoadingIndicator from "../components/UI/LoadingIndicator";
+import ErrorIndicator from "../components/UI/ErrorIndicator";
 
 export default function AttributePage() {
   const { attribute } = useParams();
@@ -15,7 +17,7 @@ export default function AttributePage() {
     staleTime: constants.STALE_TIME,
   });
 
-  const charactersPerPage = 3;
+  const charactersPerPage = 6;
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -41,8 +43,22 @@ export default function AttributePage() {
         {attribute} characters
       </h1>
       <div className="flex flex-col items-center justify-center p-6">
-        {isLoading && <p>Loading...</p>}
-        {isError && <p>{error.message}</p>}
+        {isLoading && (
+          <LoadingIndicator
+            text="Loading characters..."
+            containerClassName="flex flex-col items-center justify-center m-5"
+            className="m-5"
+            width={50}
+            height={50}
+            color="gray"
+          />
+        )}
+        {isError && (
+          <ErrorIndicator
+            title="An error occurred"
+            message={error?.message || "Failed to fetch characters."}
+          />
+        )}
         {data && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
             {currentCharacters.map((character, index) => (
@@ -54,13 +70,15 @@ export default function AttributePage() {
             ))}
           </div>
         )}
-        <div className="flex justify-center mt-5">
-          <Pager
-            totalPages={totalPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </div>
+        {currentCharacters.length >= charactersPerPage && (
+          <div className="flex justify-center mt-5">
+            <Pager
+              totalPages={totalPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
+        )}
       </div>
     </main>
   );

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeaponDetails } from "../api/http";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
+import ErrorIndicator from "../components/UI/ErrorIndicator";
 import constants from "../constants/constants";
 import Header from "../components/UI/Header";
 import { useParams } from "react-router-dom";
@@ -24,13 +25,20 @@ export default function WeaponDetailsPage() {
       <div className="flex flex-col items-center justify-center m-5">
         {isLoading && (
           <LoadingIndicator
+            text="Loading weapon..."
+            containerClassName="flex flex-col items-center justify-center m-5"
             className="m-5"
             width={50}
             height={50}
             color="gray"
           />
         )}
-        {isError && <p>Error: {error.message}</p>}
+        {isError && (
+          <ErrorIndicator
+            title="An error occurred"
+            message={error?.message || "Failed to fetch weapon."}
+          />
+        )}
         {data && (
           <>
             <div className="card-body">

@@ -5,6 +5,7 @@ import { fetchCharacter } from "../api/http";
 import constants from "../constants/constants";
 import { motion } from "framer-motion";
 import LoadingIndicator from "../components/UI/LoadingIndicator";
+import ErrorIndicator from "../components/UI/ErrorIndicator";
 import Image from "../components/UI/Image";
 
 export default function CharacterPage() {
@@ -30,13 +31,20 @@ export default function CharacterPage() {
       >
         {isLoading && (
           <LoadingIndicator
-            type="spin"
-            color="#2563EB"
             text="Loading character..."
-            containerClassName="flex flex-col gap-5 items-center justify-center text-primary-content h-screen"
+            containerClassName="flex flex-col items-center justify-center m-5"
+            className="m-5"
+            width={50}
+            height={50}
+            color="gray"
           />
         )}
-        {isError && <p className="text-center text-error">{error.message}</p>}
+        {isError && (
+          <ErrorIndicator
+            title="An error occurred"
+            message={error?.message || "Failed to fetch character."}
+          />
+        )}
         {data && (
           <div className="container mx-auto mt-5 text-center bg-secondary text-neutral-content rounded-lg flex-grow">
             <div className="card-body flex flex-row gap-5">

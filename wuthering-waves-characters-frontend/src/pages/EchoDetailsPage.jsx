@@ -32,13 +32,19 @@ export default function EchoDetailsPage() {
         {isLoading && (
           <LoadingIndicator
             text="Loading echo..."
-            type="spin"
-            color="#000"
-            height={50}
+            containerClassName="flex flex-col items-center justify-center m-5"
+            className="m-5"
             width={50}
+            height={50}
+            color="gray"
           />
         )}
-        {isError && <p>{error.message}</p>}
+        {isError && (
+          <ErrorIndicator
+            title="An error occurred"
+            message={error?.message || "Failed to fetch echo."}
+          />
+        )}
 
         {data && (
           <>

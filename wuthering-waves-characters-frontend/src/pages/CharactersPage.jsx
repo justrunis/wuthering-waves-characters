@@ -47,12 +47,12 @@ export default function CharactersPage() {
       {isLoading && (
         <div className="flex justify-center">
           <LoadingIndicator
-            containerClassName="flex flex-col items-center justify-center m-5"
             text="Loading characters..."
-            type="spin"
-            color="red"
-            height={50}
+            containerClassName="flex flex-col items-center justify-center m-5"
+            className="m-5"
             width={50}
+            height={50}
+            color="gray"
           />
         </div>
       )}

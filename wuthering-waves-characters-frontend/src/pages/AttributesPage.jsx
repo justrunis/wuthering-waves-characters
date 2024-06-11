@@ -23,6 +23,8 @@ export default function AttributesPage() {
         </p>
         {isLoading && (
           <LoadingIndicator
+            text="Loading attributes..."
+            containerClassName="flex flex-col items-center justify-center m-5"
             className="m-5"
             width={50}
             height={50}
@@ -35,7 +37,7 @@ export default function AttributesPage() {
             message={error?.message || "Failed to fetch attributes."}
           />
         )}
-        {data && data?.attributes ? (
+        {data && data?.attributes && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
             {data.attributes.map((attribute, index) => (
               <AttributesCard
@@ -44,13 +46,6 @@ export default function AttributesPage() {
                 delay={index * 0.2}
               />
             ))}
-          </div>
-        ) : (
-          <div>
-            <ErrorIndicator
-              title="No attributes found"
-              message="Failed to fetch attributes."
-            />
           </div>
         )}
       </div>
